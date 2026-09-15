@@ -1,0 +1,10 @@
+# Executables and build outputs
+*.exe
+*.obj
+*.o
+*.ilk
+*.pdb
+*.vc140.pdb
+
+# VS Code directory
+.vscode/
