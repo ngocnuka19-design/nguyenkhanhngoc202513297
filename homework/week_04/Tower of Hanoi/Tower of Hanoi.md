@@ -86,6 +86,7 @@ Tower_of_Hanoi(n, A, B, C)
 
 ```text
 Moving disk form A to C
+1
 ```
 #### Test case 2 – Three disks
 
@@ -105,6 +106,7 @@ Moving disk form A to C
 Moving disk form B to A
 Moving disk form B to C
 Moving disk form A to C
+7
 ```
 
 ---
@@ -140,6 +142,6 @@ The original recursive order is:
 ```
 ### 3. Some Things to Note
 - `temp`**:** `pop()` removes the current frame from the Stack. However, we still need its information (`num_disk`, `org`, `mid`, and `end`) to create the next tasks. Therefore, `temp` is used to temporarily store the current frame.
-- **Why no** `**state**` **is needed:** In `Tower_of_Hanoi`, each task consists of only three fixed steps. We can take advantage of LIFO and simply push these steps in reverse order.
+- In `Tower_of_Hanoi`, each task consists of only three fixed steps. We can take advantage of LIFO and simply push these steps in reverse order.
   However, in a more complicated recursive function, a task may need to be paused halfway, execute a smaller recursive task, and then return to a specific point in the original task. 
   In that case, a `state` variable would be useful to remember **where the task stopped and what it should do next**.
