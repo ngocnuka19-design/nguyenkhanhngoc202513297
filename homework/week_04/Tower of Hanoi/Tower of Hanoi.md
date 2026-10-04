@@ -108,3 +108,38 @@ Moving disk form A to C
 ```
 
 ---
+## Non-Recursive (Stack)
+
+### 1. Problem & Concept
+
+Solving the **Tower of Hanoi** non-recursively by using an explicit **Stack** structure.
+
+- **Why Stack?** Standard recursion relies on the system's Call Stack. By managing our own Stack on Heap memory, we avoid stack overflow errors for large values of `n` and control the task execution flow directly. (Basically, Stack is also using a recursive algorithm, but not a "recursive" memory-organization)
+- **Task Structure:** Each stack element represents a sub-problem stored as a `task` structure containing parameters:
+  - `num_disk`: Number of disks to move.
+  - `org`: Source peg.
+  - `mid`: Auxiliary/temporary peg.
+  - `end`: Destination peg.
+### 2. Algorithm & LIFO Order Logic
+
+Since a Stack operates on the **LIFO (Last-In, First-Out)** principle, the task pushed **last** will be executed **first**. 
+
+To maintain the correct sequence of execution equivalent to recursion, we must push tasks onto the Stack in **reverse order**:
+```
+st.push({temp.num_disk -1, temp.mid, temp.org, temp.end});
+st.push({1, temp.org, temp.mid, temp.end});
+st.push({temp.num_disk - 1, temp.org, temp.end, temp.mid});
+```
+
+The original recursive order is:
+
+```
+1. Tower_of_Hanoi(n - 1, org, end, mid)
+2. Move disk from org to end
+3. Tower_of_Hanoi(n - 1, mid, org, end)
+```
+### 3. Some Things to Note
+- `temp`**:** `pop()` removes the current frame from the Stack. However, we still need its information (`num_disk`, `org`, `mid`, and `end`) to create the next tasks. Therefore, `temp` is used to temporarily store the current frame.
+- **Why no** `**state**` **is needed:** In `Tower_of_Hanoi`, each task consists of only three fixed steps. We can take advantage of LIFO and simply push these steps in reverse order.
+  However, in a more complicated recursive function, a task may need to be paused halfway, execute a smaller recursive task, and then return to a specific point in the original task. 
+  In that case, a `state` variable would be useful to remember **where the task stopped and what it should do next**.
