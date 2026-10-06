@@ -186,92 +186,52 @@ Insertion Sort performs well when the array is already sorted or almost sorted.
 
 ---
 
-## Test Cases
+### Test case 1 – One element
 
-### Test case 1 – Empty array
-
-**Input**
-
-```text
-0
-```
-
-**Expected output**
-
-```text
-```
-
-### Test case 2 – One element
+  
 
 **Input**
 
 ```text
+
 1
 7
+
 ```
 
-**Expected output**
+**Output**
 
 ```text
 7
 ```
 
-### Test case 3 – Already sorted
+### Test case 2 – Reverse sorted
 
 **Input**
 
 ```text
-5
-1 2 3 4 5
-```
 
-**Expected output**
-
-```text
-1 2 3 4 5
-```
-
-### Test case 4 – Reverse sorted
-
-**Input**
-
-```text
 5
 5 4 3 2 1
+
 ```
 
-**Expected output**
+**Output**
 
 ```text
 1 2 3 4 5
 ```
-
-### Test case 5 – Duplicate and negative values
+### Test case 3 – Duplicate and negative values
 
 **Input**
 
-```text
+```
 6
 3 -1 2 3 0 -1
 ```
 
-**Expected output**
+**Output**
 
-```text
+```
 -1 -1 0 2 3 3
-```
-
-### Test case 6 – General case
-
-**Input**
-
-```text
-8
-64 25 12 22 11 90 5 37
-```
-
-**Expected output**
-
-```text
-5 11 12 22 25 37 64 90
 ```

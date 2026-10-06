@@ -3,9 +3,16 @@
 using namespace std;
 
 int main (){
-    int A[13] = {101,23,57,13,25,121,87,36,13,204,111,89,59};
-    // Printing the initial array
-    for (int k = 0; k < 13; k++) {
+    int n;
+    cin >> n;
+
+    int A[n];
+
+    for(int i = 0; i < n; i++){
+        cin >> A[i]; 
+    }
+
+    for (int k = 0; k < n; k++) {
         cout << A[k] << "   ";
         }
     cout << "\n" << "The above is printing the initial array" << "\n";
