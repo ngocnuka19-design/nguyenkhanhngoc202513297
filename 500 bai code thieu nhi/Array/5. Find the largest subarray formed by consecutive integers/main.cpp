@@ -12,11 +12,6 @@ int main (){
         cin >> A[i]; 
     }
 
-    int max_A = A[0];
-    for (int i = 0; i < n - 1; i++){
-        if (A[i+1] > max_A) max_A = A[i+1];
-    }
-
     int max_length = 0;
     int result[n] = {0};
 
@@ -30,8 +25,16 @@ int main (){
             if (A[j] > max) max = A[j];
             if (A[j] < min) min = A[j];
 
-            if (visted[A[j]] == 1) break;
-            else visted[A[j]] = 1;
+            bool duplicate = false;
+
+            for (int k = i; k < j; k++){
+                if (A[k] == A[j]){
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if (duplicate) break;
 
             if (max_length < (max - min + 1) && (max - min + 1) == j - i + 1){
                 max_length = max - min + 1;
