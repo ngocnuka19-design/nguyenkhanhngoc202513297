@@ -29,47 +29,47 @@ For each group containing multiple equal prefix sums:
 
 Recall that if two prefix sums have the same value:
 
-\`P[i] = P[j]\`
+`P[i] = P[j]`
 
 Then:
 
-\`A[i] + ... + A[j-1] = 0\`
+`A[i] + ... + A[j-1] = 0`
 
-Since the prefix sum array is sorted, its elements are no longer necessarily in their original positional order. Therefore, we use the stored \`pos\` values to recover the correct subarray.
+Since the prefix sum array is sorted, its elements are no longer necessarily in their original positional order. Therefore, we use the stored `pos` values to recover the correct subarray.
 
 For any pair of equal prefix sums:
 
-\`\`\`cpp
+```cpp
 int start = min(prefix[a].pos, prefix[b].pos) + 1;
 int end = max(prefix[a].pos, prefix[b].pos);
-\`\`\`
+```
 
 The corresponding zero-sum subarray is:
 
-\`A[start ... end]\`
+`A[start ... end]`
 
 ### 2.3 Generating All Pairs
 
 Suppose a group contains three equal prefix sums:
 
-\`\`\`text
+```text
 Index:  0  1  2
 Value:  5  5  5
-\`\`\`
+```
 
 The nested loops generate:
 
-\`\`\`text
+```text
 (0, 1)
 (0, 2)
 (1, 2)
-\`\`\`
+```
 
-Therefore, a group containing \`m\` equal prefix sums produces:
+Therefore, a group containing `m` equal prefix sums produces:
 
-\`\`\`
+```
 m * (m - 1) / 2
-\`\`\`
+```
 
 possible pairs, each representing a different zero-sum subarray.
 
@@ -80,9 +80,9 @@ possible pairs, each representing a different zero-sum subarray.
 
 Unlike the original problem, this implementation also receives the original array \`arr[]\`, which is required to print the subarrays.
 
-\`\`\`cpp
+```cpp
 void merge_sort_prefix (prefix_sum prefix[], int length, int arr[]);
-\`\`\`
+```
 
 ### 3.2 Main Changes
 
@@ -101,45 +101,45 @@ The remaining functions, including the prefix sum structure and Merge Sort imple
 
 **Input**
 
-\`\`\`text
+```text
 10
 3 4 -7 3 1 3 1 -4 -2 -2
-\`\`\`
+```
 
 **Output**
 
-\`\`\`text
+```text
 { 3 4 -7 }
 { 3 4 -7 3 1 3 1 -4 -2 -2 }
 { 3 1 3 1 -4 -2 -2 }
 { 4 -7 3 }
 { -7 3 1 3 }
 { 3 1 -4 }
-\`\`\`
+```
 
 ### 4.2 No Zero-Sum Subarray
 
 **Input**
 
-\`\`\`text
+```text
 5
 1 2 3 4 5
-\`\`\`
+```
 
 **Output**
 
-\`\`\`text
+```text
 No zero-sum subarray exists.
-\`\`\`
+```
 
 ### 4.3 Multiple Equal Prefix Sums
 
 **Input**
 
-\`\`\`text
+```text
 4
 0 0 0 0
-\`\`\`
+```
 
 **Output**
 
